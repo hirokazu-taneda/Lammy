@@ -1,0 +1,193 @@
+html {
+    height: auto;
+    min-height: 100%;
+    background-color: #eff1f4;
+}
+
+body {
+	font-family: Sans-Serif;
+}
+
+/*this is main div details*/
+.maindiv {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 980px;
+ 	background-color: white;
+}
+
+.mainleft, .mainright{
+	width: 490px;
+	float: left;
+}
+
+/*to make elements center*/
+.center {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#header {
+	width: 980px;
+	height: 100px;
+}
+
+/*menu bar css start*/
+.menubar {
+	width: 980;
+	background-color: #f3f3f3; 
+	text-align: center;
+}
+
+.menubar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    display:inline-block;
+}
+
+.menubar li {
+    float: left;
+}
+
+.menubar li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 8px 100px;
+    text-decoration: none;
+}
+
+.menubar li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.menubar li a.active {
+    color: white;
+    background-color: #F05557;
+}
+
+/*menu bar css end*/
+
+
+
+/*search bar start*/
+* {box-sizing: border-box;}
+
+.search-container {
+    margin-left: 90px;
+    margin-top: 30px;
+    float: left;
+}
+
+input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  max-width: 250px;
+}
+
+.search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+/*search bar end*/
+
+/*top map css*/
+#topmap {
+    height: 250px;
+    width: 400px;
+    border: 1px solid black;
+}
+
+#hometop, #homebottom {
+	width: 980px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.restaurantcard, .rescard_top, .rescard_bottom {
+	width: 600px;
+	float: left;
+}
+
+.rescontainer {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.restaurantcard {
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.res_profpic {
+	width: 100px;
+	height: 100px;
+}
+
+.rescard_img, .rescard_info, .rescard_map {
+	float: left;
+	margin-left: 10px;
+}
+
+.rescard_info {
+	width: 300px;
+}
+
+.rescard_map {
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+}
+
+.rescard_top {
+	text-align: center;
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+
+.rescard_bottom {
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+h3 {
+	display: inline;
+}
+
+.res_details {
+	font-size: 15px;
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+
+/*star rating*/
+.checked {
+    color: orange;
+}
+
+.rating {
+	display: inline;
+	float: right;
+	margin-right: 20px;
+}
