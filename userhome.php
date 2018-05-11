@@ -12,7 +12,7 @@
                 <div class="menubar">
                     <ul>
                       <li><a class="active" href="#home">Home</a></li>
-                      <li><a href="#MyPage">My Page</a></li>
+                      <li><a href="mypage.php">My Page</a></li>
                       <li><a href="#Inquiry">Inquiry</a></li>
                     </ul>
                 </div>
@@ -29,19 +29,6 @@
                     </div>
                     <div class="mainright">
                         <div id="topmap"></div>
-                            <script>
-                            function myMap() {
-                            var mapOptions = {
-                                center: new google.maps.LatLng(51.5, -0.12),
-                                zoom: 10,
-                                mapTypeId: google.maps.MapTypeId.HYBRID
-                            }
-                            var map = new google.maps.Map(document.getElementById("topmap"), mapOptions);
-                            }
-                            </script>
-                            <script async defer
-                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfwbzAF4iTRKhRUn8tnXyd7wdENDZbA4&callback=initMap">
-                            </script> 
                     </div>
                 </div>
                 <div id="homebottom">
@@ -66,7 +53,7 @@
                                 <p class="res_details"><strong>Telephone:</strong> 032-123-1234</p>
                                 <p class="res_details"><strong>Open Hours:</strong> 8:00am - 9:00pm</p>
                             </div>
-                            <div class="rescard_map">
+                            <div id="rescard_map">
                             </div>
                             <div class="rescard_bottom">
                                 <i class="fas fa-heart"></i>: 500
@@ -80,3 +67,34 @@
         </div>     
     </body>
 </html>
+
+<!-- Map for Top Map -->
+<script>
+  function initMap() {
+    var uluru = {lat: -25.363, lng: 131.044};
+    var uluru2 = {lat: -25.363, lng: 131.044};
+
+    var map = new google.maps.Map(document.getElementById('topmap'), {
+      zoom: 4,
+      center: uluru
+    });
+    var map2 = new google.maps.Map(document.getElementById('rescard_map'), {
+      zoom: 4,
+      center: uluru2
+    });
+
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+    var marker2 = new google.maps.Marker({
+      position: uluru2,
+      map: map
+    });
+
+  }
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYfwbzAF4iTRKhRUn8tnXyd7wdENDZbA4&callback=initMap">
+</script> 
