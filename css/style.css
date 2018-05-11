@@ -86,11 +86,11 @@ body {
     float: left;
 }
 
-input[type=text] {
+input[type=text],  input[type=password]{
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
-  border: none;
+  border: 2px solid gray;
   max-width: 250px;
 }
 
@@ -192,6 +192,7 @@ h3 {
 	margin-right: 20px;
 }
 
+<<<<<<< Updated upstream
 
 
 
@@ -339,8 +340,6 @@ h3 {
 }
 
 .mainbutton {
-    border: none;
-    color: white;
     padding: 5px 32px;
     text-align: center;
     text-decoration: none;
@@ -380,3 +379,58 @@ hr {
     border: 0;
     box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }
+=======
+/*loginuser.php*/
+
+/*admin button*/
+
+.adminbutton{
+  width: 10px;
+  text-align: center;
+}
+.admin {
+  background-color: white; 
+  color: #757575; 
+  border: 2px solid #f44336;
+
+}
+
+.admin:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+.login{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.submit{
+  /*margin-left: 30px;*/
+    background-color: #f44336;
+    color: white;
+    border: 2px solid #f44336;
+}
+
+.submit:hover {
+    background-color: white; 
+    color: #757575; 
+}
+
+.register{
+  background-color: white; 
+    color: #757575; 
+    border: 2px solid #f44336;
+}
+
+.admin {
+  margin-left: 830px;
+}
+
+.register:hover {
+    background-color: #f44336;
+    color: white;
+}
+>>>>>>> Stashed changes

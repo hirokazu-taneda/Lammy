@@ -12,7 +12,7 @@
  
     <h1>Welcome to Lammy!</h1>
     <div class="admlogin"><h1>Admin Login</h1>
-     <hr>
+     
     
       <form action="admlogin.php" method="POST">
  
