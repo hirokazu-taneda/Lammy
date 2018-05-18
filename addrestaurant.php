@@ -47,26 +47,29 @@ if($conn ->query($sql) === TRUE) {
         	<div class="add">
 				<h1>Add restaurant</h1>
     				<form action="addrestaurant.php" method="POST">
-        				<div class="form"><br>
-        					<input type="text" name="name" placeholder="Restaurant Name" required><br>
-        					<input type="file" name="pic1" placeholder="pic1" required><br>
-        					<input type="file" name="pic2" placeholder="pic2" required><br>
-        					<input type="file" name="pic3" placeholder="pic3" required><br>
+        				<div class="form">	
+        					<input type="text" name="name" placeholder="Restaurant Name" class="box" required><br><br>
+        					<input type="file" name="pic1" placeholder="pic1"  required><br>
+        					<input type="file" name="pic2" placeholder="pic2"  required><br>
+        					<input type="file" name="pic3" placeholder="pic3"  required><br>
         					<input type="file" name="pic4" placeholder="pic4" required><br>	
-                  			<input type="text" name="map" placeholder="Map" required><br>
-                			<input type="text" name="address" placeholder="Address" required><br>
-                  			<input type="tel" name="tel" placeholder="Telephone Number" required><br>
-                  			<input type="time" name="openhour" placeholder="Openhour" required>
-                  			<input type="time" name="endhour" placeholder="Endhour" required><br>
-                  			<input type="text" name="cost" placeholder="Average Cost" required><br><br>
+                  			<input type="text" name="map" placeholder="Map" class="box" required><br>
+                			<input type="text" name="address" placeholder="Address" class="box" required><br>
+                  			<input type="text" name="tel" placeholder="Telephone Number" class="box" required><br>
+                  			<input type="time" name="openhour" required>
+                  			<input type="time" name="endhour" required><br>
+                  			<input type="text" name="cost" placeholder="Average Cost" class="box" required><br><br>
 
                   			<button type ="submit" class="mainbutton submit" name="submit">Add</button>
                 		</div>
                 	</form>
             </div>
-        <hr>
-        	<button type ="submit" class="mainbutton submit" name="submit">Logout</button>
+        <div id="footer">
+                <hr>
+                <button class="mainbutton logout">Logout</button>
+            </div>
         </div>
+
 
  </body>
  </html>

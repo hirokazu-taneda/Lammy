@@ -10,17 +10,10 @@ body {
 
 /*this is main div details*/
 .maindiv {
-<<<<<<< HEAD
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 980px;
- 	  background-color: white;
-    
-=======
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 980px;
  	background-color: white;
   position: absolute;
->>>>>>> 5bd436e5f7ef352079730e76852ff36005199104
 }
 
 .mainleft, .mainright{
@@ -100,7 +93,7 @@ body {
     float: left;
 }
 
-input[type=text], input[type=email],  input[type=password]{
+input[type=text], input[type=email],  input[type=password], input[type=time]{
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -206,11 +199,6 @@ h3 {
 	margin-right: 20px;
 }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-=======
->>>>>>> 5bd436e5f7ef352079730e76852ff36005199104
 .mypage {
 	width: 600px;
 	margin-left: auto;
@@ -367,7 +355,6 @@ hr {
     color: white;
 }
 
-<<<<<<< HEAD
 .admin {
     margin-left: 830px;
 }
@@ -384,15 +371,14 @@ hr {
     width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px; 
+    margin-top: 30px; 
     text-align: center;
 }
 
+.box{
+  width: 400px;
+}
 
-
-
-
-=======
 
 /*admin tab and list css*/
 .tabcontainer{
@@ -504,4 +490,3 @@ div.tab button.active {
 .bRight {
   text-align: right;
 }
->>>>>>> 5bd436e5f7ef352079730e76852ff36005199104
