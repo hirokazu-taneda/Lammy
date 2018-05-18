@@ -35,8 +35,8 @@
                     </form>
                 </div>
             </div>
-            <hr>
             <div id="footer">
+                <hr>
                 <button class="mainbutton logout">Logout</button>
             </div>
         </div>     
