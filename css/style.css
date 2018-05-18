@@ -10,9 +10,10 @@ body {
 
 /*this is main div details*/
 .maindiv {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 980px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 980px;
  	background-color: white;
+  position: absolute;
 }
 
 .mainleft, .mainright{
@@ -34,6 +35,12 @@ body {
 	width: 980px;
 	height: 100px;
 }
+
+#adminheader {
+  width: 980px;
+  height: 50px;
+}
+
 
 /*menu bar css start*/
 .menubar {
@@ -192,112 +199,6 @@ h3 {
 	margin-right: 20px;
 }
 
-<<<<<<< Updated upstream
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .mypage {
 	width: 600px;
 	margin-left: auto;
@@ -305,8 +206,16 @@ h3 {
 	text-align: center;
 }
 
-.maincontent {
+#maincontent {
 	width: 980px;
+  float: left;
+}
+
+#footer {
+  width: 980px;
+  float: left;
+  height: 100px;
+  background: white;
 }
 
 .userprofpic {
@@ -362,16 +271,28 @@ h3 {
     color: white;
 }
 
-.logout{
-	margin-left: 30px;
+.button2{
+  margin-left: 30px;
     background-color: #f44336;
     color: white;
     border: 2px solid #f44336;
 }
 
-.logout:hover {
+.button2:hover {
     background-color: white; 
     color: #757575; 
+}
+
+.logout{
+	margin-left: 30px;
+    background-color: white;
+    color: #757575;
+    border: 2px solid #444444;
+}
+
+.logout:hover {
+    background-color: #444444; 
+    color: white; 
 }
 
 hr {
@@ -379,7 +300,7 @@ hr {
     border: 0;
     box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }
-=======
+
 /*loginuser.php*/
 
 /*admin button*/
@@ -433,4 +354,115 @@ hr {
     background-color: #f44336;
     color: white;
 }
->>>>>>> Stashed changes
+
+
+/*admin tab and list css*/
+.tabcontainer{
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    border-radius: 0px;
+    width:33.333%;
+    background-color: #F1F1F1;
+    color:#5F5F5F;
+    font-size:14px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: #ffffff;
+    height: 445px;
+    overflow-y: auto;
+}
+
+.tabcontent {
+    -webkit-animation: fadeEffect 0.50s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.list {
+    border-collapse: collapse;
+    text-align: left;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.listth {
+    background-color: #008CC9;
+    color: white;
+    padding: 5px 5px;
+    font-size:14px;
+}
+
+.adminlistth {
+}
+
+.listtd {
+    color:#5F5F5F;
+    font-size:14px;
+    -webkit-animation: fadeEffect 0.50s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+.list, .listth , .listtd {
+    border: 0 solid black;
+}
+
+.listtr {
+  height: 50px;
+}
+
+.listtr:hover td { 
+    background: #ffd6d6; 
+}
+
+.listtr:nth-child(even) {background-color: #f2f2f2}
+
+.bRight {
+  text-align: right;
+}
