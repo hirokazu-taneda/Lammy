@@ -19,7 +19,7 @@
 				</ul>
 				</div>
 			</div>	
-		<div style="clear: both;">
+		<div style="clear: both;">		
       
 			<div class="main">
       	<h1>Admin Home</h1>
