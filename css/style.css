@@ -93,7 +93,7 @@ body {
     float: left;
 }
 
-input[type=text], input[type=email],  input[type=password], input[type=time]{
+input[type=text], input[type=email],  input[type=password]{
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -359,8 +359,10 @@ hr {
 .admin {
     margin-left: 830px;
 }
+  
 
 /*register page*/
+
 .h1{
   font-family: Noteworthy;
 }
@@ -373,6 +375,7 @@ hr {
     margin-top: 50px; 
     text-align: center;
 }
+
 
 /*admin tab and list css*/
 .tabcontainer{
@@ -572,7 +575,6 @@ h4 {
 .rev_top, .restaurantpics, .restaurantdetail, .rev_card {
   margin-left: 25px;
 }
-
 .fa-heart {
   color: #F05557;
 }
