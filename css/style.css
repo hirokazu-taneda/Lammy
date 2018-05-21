@@ -10,17 +10,10 @@ body {
 
 /*this is main div details*/
 .maindiv {
-<<<<<<< HEAD
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 980px;
- 	  background-color: white;
-    
-=======
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 980px;
  	background-color: white;
   position: absolute;
->>>>>>> 5bd436e5f7ef352079730e76852ff36005199104
 }
 
 .mainleft, .mainright{
@@ -206,11 +199,6 @@ h3 {
 	margin-right: 20px;
 }
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-=======
->>>>>>> 5bd436e5f7ef352079730e76852ff36005199104
 .mypage {
 	width: 600px;
 	margin-left: auto;
@@ -221,6 +209,7 @@ h3 {
 #maincontent {
 	width: 980px;
   float: left;
+  background-color: white; 
 }
 
 #footer {
@@ -235,7 +224,7 @@ h3 {
 	width: 200px;
 }
 
-.mypage input[type=text], .mypage input[type=password] {
+.mypage input[type=text], .mypage input[type=password], .mypage input[type=email] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -367,7 +356,6 @@ hr {
     color: white;
 }
 
-<<<<<<< HEAD
 .admin {
     margin-left: 830px;
 }
@@ -388,11 +376,6 @@ hr {
     text-align: center;
 }
 
-
-
-
-
-=======
 
 /*admin tab and list css*/
 .tabcontainer{
@@ -504,4 +487,106 @@ div.tab button.active {
 .bRight {
   text-align: right;
 }
->>>>>>> 5bd436e5f7ef352079730e76852ff36005199104
+
+.restaurantpics {
+  width: 650px;
+  float: left;
+  padding-left: 15px;
+}
+
+#detail_map {
+  width: 200px;
+  height: 150px;
+  float: left;
+  border: 1px solid black;
+}
+
+.resdetailcontent {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.restaurantdetail {
+  width: 650px;
+  float: left;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.rev_card {
+  margin-top: 20px;
+  width: 650px;
+  float: left;
+  border: 2px solid #666666;
+}
+
+.rev_userpic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.rev_left {
+  width: 100px;
+  float: left;
+  text-align: center;
+}
+
+.rev_right {
+  width: 500px;
+  float: left;
+  padding:5px;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+  color: #757575;
+}
+
+.rating1 {
+  display: inline;
+  float: left;
+}
+
+.rev_comment {
+  margin-top: 5px;
+  width: 450px;
+  color: #757575;
+  float: left;
+  font-size: 14px;
+}
+
+.rev_pics {
+  margin-top: 5px;
+  width: 450px;
+  float: left;
+}
+
+.rev_top {
+  width: 650px;
+  float: left;
+  text-align: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.rev_top, .restaurantpics, .restaurantdetail, .rev_card {
+  margin-left: 25px;
+}
+.fa-heart {
+  color: #F05557;
+}
+
+.rev_left1 {
+  width: 200px;
+  float: left;
+}
+
+.heartdiv {
+  width: 150px;
+  float:left;
+  margin-top: 5px;
+  margin-left: 5px;
+}

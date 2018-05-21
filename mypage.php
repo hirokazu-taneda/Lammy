@@ -22,7 +22,7 @@
                     <img src="images/user_profpic/usericon.png" class="userprofpic">
                     <form>
                         <input type="text" name="name" placeholder="Name"><br>
-                        <input type="text" name="email" placeholder="Email"><br>
+                        <input type="email" name="email" placeholder="Email" required><br>
                         <input type="password" name="password" placeholder="Password"><br>
                         <input type="password" name="cpassword" placeholder="Confirm Password"><br>
                         <p class="plabel">Gender
