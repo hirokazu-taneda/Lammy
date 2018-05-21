@@ -33,7 +33,7 @@ body {
 
 #header {
 	width: 980px;
-	height: 100px;
+	height: 80px;
 }
 
 #adminheader {
@@ -93,7 +93,7 @@ body {
     float: left;
 }
 
-input[type=text],  input[type=password], input[type=time] {
+input[type=text], input[type=email],  input[type=password], input[type=time]{
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -307,13 +307,13 @@ hr {
 /*admin button*/
 
 .adminbutton{
-  width: 10px;
-  text-align: center;
+    width: 10px;
+    text-align: center;
 }
 .admin {
-  background-color: white; 
-  color: #757575; 
-  border: 2px solid #f44336;
+    background-color: white; 
+    color: #757575; 
+    border: 2px solid #f44336;
 
 }
 
@@ -323,10 +323,13 @@ hr {
 }
 
 .login{
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px; 
+    text-align: center;
+
+    
 }
 
 .submit{
@@ -334,6 +337,7 @@ hr {
     background-color: #f44336;
     color: white;
     border: 2px solid #f44336;
+    
 }
 
 .submit:hover {
@@ -342,13 +346,9 @@ hr {
 }
 
 .register{
-  background-color: white; 
+    background-color: white; 
     color: #757575; 
     border: 2px solid #f44336;
-}
-
-.admin {
-  margin-left: 830px;
 }
 
 .register:hover {
@@ -356,6 +356,23 @@ hr {
     color: white;
 }
 
+.admin {
+    margin-left: 830px;
+}
+
+/*register page*/
+.h1{
+  font-family: Noteworthy;
+}
+
+/*addrestaurant*/
+.add{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px; 
+    text-align: center;
+}
 
 /*admin tab and list css*/
 .tabcontainer{
@@ -467,7 +484,6 @@ div.tab button.active {
 .bRight {
   text-align: right;
 }
-
 
 .restaurantpics {
   width: 650px;
