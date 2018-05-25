@@ -4,6 +4,32 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+            <script>
+	            function myFunction(restaurantid) {
+	                var values = document.getElementById("restaurantid").value;
+	                var txt;
+	                var r = confirm("Are you sure to delete?");
+	                if (r == true) {
+	                    document.location.href = "remove.php?ProfileID="+values+"";
+	                    txt = "";
+	                } else {
+	                    txt = "Cancel button is clicked.";
+	                }
+	            }
+
+	            function userdelete(userid) {
+	                var values = document.getElementById("userid").value;
+	                var txt;
+	                var r = confirm("Are you sure to delete?");
+	                if (r == true) {
+	                    document.location.href = "remove.php?ProfileID="+values+"";
+	                    txt = "";
+	                } else {
+	                    txt = "Cancel button is clicked.";
+	                }
+	            }	            
+            </script>
     </head>
     <body>
         <div class="maindiv center">
@@ -49,7 +75,8 @@
 	                        	<td class="listtd">Restaurant D</td>
 	                        	<td class="listtd">
 	                        		<button class="mainbutton button2">Edit</button>
-	                        		<button class="mainbutton button1">Delete</button>
+	                        		<button class="mainbutton button1" onclick="myFunction('1')">Delete</button>
+	                        		<input type="hidden" id="restaurantid" name="restaurantid" value=1>
 	                        	</td>
 	                        </tr>
 	                    </table>
@@ -81,7 +108,8 @@
 	                        <tr class="listtr">
 	                        	<td class="listtd">User D</td>
 	                        	<td class="listtd bRight">
-	                        		<button class="mainbutton button1">Delete</button>
+	                        		<button class="mainbutton button1" onclick="myFunction('1')">Delete</button>
+	                        		<input type="hidden" id="userid" name="userid" value=1>
 	                        	</td>
 	                        </tr>
 	                    </table>

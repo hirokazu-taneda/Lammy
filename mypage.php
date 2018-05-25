@@ -4,6 +4,20 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+            <script>
+            function myFunction(userid) {
+                var values = document.getElementById("userid").value;
+                var txt;
+                var r = confirm("Are you sure to delete?");
+                if (r == true) {
+                    document.location.href = "remove.php?ProfileID="+values+"";
+                    txt = "";
+                } else {
+                    txt = "Cancel button is clicked.";
+                }
+            }
+            </script>
     </head>
     <body>
         <div class="maindiv center">
@@ -38,6 +52,8 @@
             <div id="footer">
                 <hr>
                 <button class="mainbutton logout">Logout</button>
+                <button class="mainbutton button2" onclick="myFunction('3')">Delete</button>
+                <input type="hidden" id="userid" name="userid" value=3>
             </div>
         </div>     
     </body>
