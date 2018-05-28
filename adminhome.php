@@ -1,3 +1,19 @@
+<?php
+	include 'dblammy.php'; 
+    $sql ="SELECT * FROM restaurant"; 
+    $result_restaurant = $conn->query($sql);
+
+    $sql ="SELECT * FROM userinfo"; 
+    $result_user = $conn->query($sql);
+
+    $sql ="SELECT * FROM comments"; 
+    $result_comments = $conn->query($sql);
+
+ ?>
+
+
+
+
 <html>
     <head>
         <title>Admin Home</title>
@@ -17,41 +33,33 @@
 	                  <button class="tablinks" onclick="openCity(event, 'user')">User</button>
 	                  <button class="tablinks" onclick="openCity(event, 'comment')">Comment</button>
 	                </div>
+	                
                 	<div id="restaurant" class="tabcontent">
                 		<button class="mainbutton button2">Add</button>
 	                    <table class="list">
 	                        <tr>
 	                            <th style="width: 550px;"class="adminlistth"></th>
 	                            <th style="width: 250px;"class="adminlistth"></th>
-	                        </tr>                    	
-	                        <tr class="listtr">
-	                        	<td class="listtd">Restaurant A</td>
-	                        	<td class="listtd">
-	                        		<button class="mainbutton button2">Edit</button>
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">Restaurant B</td>
-	                        	<td class="listtd">
-	                        		<button class="mainbutton button2">Edit</button>
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">Restaurant C</td>
-	                        	<td class="listtd">
-	                        		<button class="mainbutton button2">Edit</button>
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">Restaurant D</td>
-	                        	<td class="listtd">
-	                        		<button class="mainbutton button2">Edit</button>
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
+	                        </tr> 
+	                        <?php   
+	                        if ($result_restaurant->num_rows > 0 ) {
+ 								while ($row = $result_restaurant->fetch_assoc()) {          	
+	                        	echo "<tr class='listtr'>";
+	                        	echo "<td class='listtd'>";
+	                            echo $row["name"];
+	                        	echo "</td>";
+	                        	echo "<td class='listtd'>
+	                        			<button class='mainbutton button2'>Edit</button>
+	                        			<button class='mainbutton button1'>Delete</button>
+	                        		  </td>";
+	                        	echo "</tr>";
+	                       	  }
+	                         }else {
+ 								 echo "<tr class='listtr'>";
+ 								 echo "<td>0 result</td>";
+ 								 echo "</tr>";
+							 }
+	                 		?>
 	                    </table>
 	                </div>
 	                <div id="user" class="tabcontent">
@@ -60,30 +68,24 @@
 	                            <th style="width: 550px;"class="adminlistth"></th>
 	                            <th style="width: 250px;"class="adminlistth"></th>
 	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User A</td>
-	                        	<td class="listtd bRight">
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User B</td>
-	                        	<td class="listtd bRight">
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User C</td>
-	                        	<td class="listtd bRight">
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User D</td>
-	                        	<td class="listtd bRight">
-	                        		<button class="mainbutton button1">Delete</button>
-	                        	</td>
-	                        </tr>
+	                        <?php
+	                        if ($result_user->num_rows > 0 ) {
+ 								while ($row = $result_user->fetch_assoc()) {   
+	                       		echo "<tr class='listtr'>";
+	                        	echo "<td class='listtd'>";
+	                        	echo $row["name"];
+	                        	echo "</td>";
+	                        	echo "<td class='listtd bRight'>
+	                        			<button class='mainbutton button1'>Delete</button>
+	                        		  </td>";
+	                            echo "</tr>";
+	                           }
+	                          }else {
+ 								 echo "<tr class='listtr'>";
+ 								 echo "<td>0 result</td>";
+ 								 echo "</tr>";
+							 }
+	                        ?>
 	                    </table>
 	                </div>
 	                <div id="comment" class="tabcontent">
@@ -92,22 +94,36 @@
 	                            <th style="width: 200px;"class="adminlistth"></th>
 	                            <th style="width: 600px;"class="adminlistth"></th>
 	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User A</td>
-	                        	<td class="listtd">This is Comment A. Please this is just a comment.</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User B</td>
-	                        	<td class="listtd">This is Comment B. Please this is just a comment.</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User C</td>
-	                        	<td class="listtd">This is Comment C. Please this is just a comment.</td>
-	                        </tr>
-	                        <tr class="listtr">
-	                        	<td class="listtd">User D</td>
-	                        	<td class="listtd">This is Comment D. Please this is just a comment.</td>
-	                        </tr>
+	                        <?php
+	                        if ($result_comments->num_rows > 0 ) {
+ 								while ($row = $result_comments->fetch_assoc()) {
+	                       		echo "<tr class='listtr'>";
+	                        	echo "<td class='listtd'>";
+	                        	echo $row["name"];
+	                        	echo "</td>";
+	                        	echo "<td class='listtd'>";
+	                        	echo $row["comment"];
+	                        	echo "</td>";
+	                            echo "</tr>";
+	                           }
+			                  }else{
+			                     echo "<tr class='listtr'>";
+		 						 echo "<td>0 result</td>";
+		 					     echo "</tr>";
+			                 }
+			                 ?>
+	                        <!-- // <tr class="listtr">
+	                        // 	<td class="listtd">User B</td>
+	                        // 	<td class="listtd">This is Comment B. Please this is just a comment.</td>
+	                        // </tr>
+	                        // <tr class="listtr">
+	                        // 	<td class="listtd">User C</td>
+	                        // 	<td class="listtd">This is Comment C. Please this is just a comment.</td>
+	                        // </tr>
+	                        // <tr class="listtr">
+	                        // 	<td class="listtd">User D</td>
+	                        // 	<td class="listtd">This is Comment D. Please this is just a comment.</td>
+	                        // </tr> -->
 	                    </table>
 	                </div>	                
 	            </div>
