@@ -3,6 +3,8 @@
 <?php
   include 'dblammy.php';
 
+  $error = 0;
+
   if (isset($_POST["submit"])){
  
   $name = $_POST["name"];
@@ -19,13 +21,16 @@
   $cost = $_POST["cost"];
 
 $sql = "INSERT INTO restaurant(name, pic1, pic2, pic3, pic4, map, type, address, tel, openhour, endhour, cost)
-VALUES ('$name', '$pic1', '$pic2', '$pic3', '$pic4', $'map', $'type', $'address', $'tel', $'openhour', $'endhour', $'cost')";
+VALUES ('$name', '$pic1', '$pic2', '$pic3', '$pic4', '$map', '$type', '$address', '$tel', '$openhour', '$endhour', '$cost')";
 
 if($conn ->query($sql) === TRUE) {
-   echo "New record created successfully";
+   header("Location: loginuser.php");
+
 } else {
+  $error = 1;
   echo "Error:" . $sql . "<br>" . $conn->error;
 }
+	 
 }
 
 ?>
@@ -54,7 +59,8 @@ if($conn ->query($sql) === TRUE) {
         					<input type="file" name="pic3" placeholder="pic3"  required><br>
         					<input type="file" name="pic4" placeholder="pic4" required><br>	
                   			<input type="text" name="map" placeholder="Map" class="box" required><br>
-                			<input type="text" name="address" placeholder="Address" class="box" required><br>
+                        <input type="text" name="type" placeholder="Type of food" class="box" required><br>
+                			  <input type="text" name="address" placeholder="Address" class="box" required><br>
                   			<input type="text" name="tel" placeholder="Telephone Number" class="box" required><br>
                   			<input type="time" name="openhour" required>
                   			<input type="time" name="endhour" required><br>
