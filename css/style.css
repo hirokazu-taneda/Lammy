@@ -31,9 +31,19 @@ body {
     margin: auto;
 }
 
+.center1 {
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+}
+
 #header {
 	width: 980px;
-	height: 80px;
+	height: 100px;
 }
 
 #adminheader {
@@ -204,6 +214,13 @@ h3 {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+}
+
+.mypage1 {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 #maincontent {
@@ -590,3 +607,41 @@ h4 {
   margin-top: 5px;
   margin-left: 5px;
 }
+
+
+.tabcontent1 {
+    display: none;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    height: 560px;
+    overflow-y: auto;
+}
+
+.tabcontent1 {
+    -webkit-animation: fadeEffect 0.50s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Pagination links */
+.paginationdiv {
+  width: 500px;
+  margin-left: 200px;
+  float: left;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
