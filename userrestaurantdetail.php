@@ -1,9 +1,42 @@
+<?php
+session_start();
+
+include 'dblammy.php';
+
+$restaurantid = 1;
+
+    $sql_getrestaurant = "SELECT * FROM restaurant WHERE restaurantid='$restaurantid'";
+    $getrestaurant = $conn->query($sql_getrestaurant);
+    
+    $row = $getrestaurant->fetch_assoc();
+    
+        $restaurantid = $row["restaurantid"];
+        $name = $row["name"];
+        $type = $row["type"];
+        $address = $row["address"];
+        $tel = $row["tel"];
+        $openhour = $row["openhour"];
+        $endhour = $row["endhour"];
+        $cost = $row["cost"];
+        $pic1 = $row["pic1"];
+        $pic2 = $row["pic2"];
+        $pic3 = $row["pic3"];
+        $pic4 = $row["pic4"];
+        $star = $row["star"];
+        $map = $row["map"];
+        $heart = $row["heart"];
+
+?>
+
+
+
 <html>
     <head>
         <title>Restaurant Detail</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="images/favicon.png" />
     </head>
     <body>
         <div class="maindiv center">
@@ -20,38 +53,38 @@
             <div id="maincontent">
                 <div class="resdetailcontent">
                     <div class="rev_top">
-                        <h3>Restaurant A</h3>
+                        <h3><?php echo $name; ?></h3>
                         <div class="rating">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star <?php if($star >= 1){ echo 'checked'; }?>"></span>
+                            <span class="fa fa-star <?php if($star >= 2){ echo 'checked'; }?>"></span>
+                            <span class="fa fa-star <?php if($star >= 3){ echo 'checked'; }?>"></span>
+                            <span class="fa fa-star <?php if($star >= 4){ echo 'checked'; }?>"></span>
+                            <span class="fa fa-star <?php if($star == 5){ echo 'checked'; }?>"></span>
                         </div>
                     </div>
                     <div class="restaurantpics">
-                        <img src="images/resto_smallpic/small1.jpg" width="150" height="150">
-                        <img src="images/resto_smallpic/small2.jpg" width="150" height="150">
-                        <img src="images/resto_smallpic/small3.jpg" width="150" height="150">
-                        <img src="images/resto_smallpic/small4.jpg" width="150" height="150">
+                        <img src="images/resto_smallpic/<?php echo $pic1; ?>" width="150" height="150">
+                        <img src="images/resto_smallpic/<?php echo $pic2; ?>" width="150" height="150">
+                        <img src="images/resto_smallpic/<?php echo $pic3; ?>" width="150" height="150">
+                        <img src="images/resto_smallpic/<?php echo $pic4; ?>" width="150" height="150">
                     </div>
                     <div class="restaurantdetail">
                         <div class="rev_left1">
                             <div id="detail_map">
                             </div>
                             <div class="heartdiv">
-                                <i class="fas fa-heart"></i> 500
+                                <i class="fas fa-heart"></i> <?php echo $heart; ?>
                             </div>
                         </div>
                         <div class="rescard_info">
                             <br>
-                            <p class="res_details"><strong>Type of Food:</strong> Italian </p>
-                            <p class="res_details"><strong>Address:</strong> Ayala Center Cebu </p>
-                            <p class="res_details"><strong>Telephone:</strong> 032-123-1234 </p>
-                            <p class="res_details"><strong>Open Hours:</strong> 8:00am - 9:00pm </p>
-                            <p class="res_details"><strong>Average Cost:</strong> ₱400 </p>
+                            <p class="res_details"><strong>Type of Food:</strong> <?php echo $type; ?> </p>
+                            <p class="res_details"><strong>Address:</strong> <?php echo $address; ?> </p>
+                            <p class="res_details"><strong>Telephone:</strong> <?php echo $tel; ?> </p>
+                            <p class="res_details"><strong>Open Hours:</strong> <?php echo $openhour; ?> - <?php echo $endhour; ?> </p>
+                            <p class="res_details"><strong>Average Cost:</strong> ₱<?php echo $cost; ?> </p>
                             <br>
-                            <button class="mainbutton button2">Add Comment</button>
+                            <a href="useraddreview.php?restaurantid=<?php echo $restaurantid; ?>"><button class="mainbutton button2">Add Comment</button></a>
                         </div>
                     </div>
                     <div class="rev_card">
