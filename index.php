@@ -42,7 +42,7 @@ session_start();
         <div id="header">
             <img src="images/lammylogo.png" width="200" style="margin: 5 0 5 10;">
                 <div class="adminbutton">
-                    <input type="button" class="mainbutton register admin" value="Admin" onClick="location.href='loginadm.php'">
+                    <input type="button" class="mainbutton register admin" value="Admin" onClick="location.href='adminlogin.php'">
                 </div>
         </div>
         <hr>

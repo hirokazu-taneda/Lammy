@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 	include 'dblammy.php'; 
     $sql ="SELECT * FROM restaurant"; 
     $result_restaurant = $conn->query($sql);
@@ -20,6 +22,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="images/favicon.png" />
     </head>
     <body>
         <div class="maindiv center">
