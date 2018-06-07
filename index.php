@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-
+hogehoge‘{
     include 'dblammy.php';
 
         if (isset($_POST["submit"])){
