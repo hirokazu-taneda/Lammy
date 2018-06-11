@@ -312,6 +312,13 @@ h3 {
     color: #757575; 
 }
 
+.button3{
+  margin-left: 30px;
+    background-color: #dddddd;
+    color: #262626;
+    border: 2px solid #262626;
+}
+
 .logout{
 	margin-left: 30px;
     background-color: white;

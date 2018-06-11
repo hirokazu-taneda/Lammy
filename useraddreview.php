@@ -6,15 +6,17 @@ include 'dblammy.php';
 //$restaurantid = $_GET["restaurantid"];
 
 $restaurantid = 1;
-$userid = 1;
+$userid = 3;
 $errorcode = 0;
 $errmsg = "";
+$errmsg1 = "";
 $y = 0;
 
 $uploadmsg1 = array("", "", "", "");
 $uploadmsg2 = array("", "", "", "");
 $uploadmsg3 = array("", "", "", "");
 $uploadmsg4 = array("", "", "", "");
+$uploadmsg5 = array("", "", "", "");
 
 
     $sql_getrestaurant = "SELECT * FROM restaurant WHERE restaurantid='$restaurantid'";
@@ -44,7 +46,7 @@ if(isset($_POST["reviewsubmit"])) {
     if(isset($_POST["starrate"])){
         $starrate = $_POST["starrate"];
     } else {
-        $errmsg = "Please set star rating.";
+        $errmsg = "Please set star rating. <br>";
         $errorcode = 1;
     }
     
@@ -54,6 +56,24 @@ if(isset($_POST["reviewsubmit"])) {
     $rev[1] = $_FILES["rev2"]["name"];
     $rev[2] = $_FILES["rev3"]["name"];
     $rev[3] = $_FILES["rev4"]["name"];
+
+
+    //checking for multibyte in 
+    if (mb_strlen($review) != strlen($review)) {
+        $errmsg1 = "Please input English Characters only. <br>";
+        $errorcode = 1;
+    } 
+
+    if (str_word_count($review) <= 10) {
+        $errmsg = "Please set minimum of 10 words. <br>";
+        $errorcode = 1;
+    } elseif (str_word_count($review) >= 500){
+        $errmsg = "Please set up to 500 words only. <br>";
+        $errorcode = 1;
+    }
+
+    $revnewname = "";
+    $uploadfile = "";
 
     for($x=1 ; $x <= 4 ; $x++ ){
 
@@ -75,8 +95,9 @@ if(isset($_POST["reviewsubmit"])) {
                     //echo "File is an image - " . $check["mime"] . ".";
                     $uploadOk = 1;
                 } else {
-                    $uploadmsg1[$y] =  "File is not an image.";
+                    $uploadmsg1[$y] =  "File is not an image. <br>";
                     $uploadOk = 0;
+                    $errorcode = 1;
                 }
             }
 
@@ -89,52 +110,50 @@ if(isset($_POST["reviewsubmit"])) {
 
             // Check file size
             if($_FILES["rev$x"]["size"] > 2000000) {
-                $uploadmsg2[$y] = "Sorry, your file is too large.";
+                $uploadmsg2[$y] = "Sorry, your file is too large. <br>";
                 $uploadOk = 0;
+                $errorcode = 1;
             }
 
             // Allow certain file formats
             if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-                $uploadmsg3[$y] = "Sorry, only JPG, JPEG & PNG files are allowed.";
+                $uploadmsg3[$y] = "Sorry, only JPG, JPEG & PNG files are allowed. <br>";
                 $uploadOk = 0;
+                $errorcode = 1;
+            }
+
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                $uploadmsg5[$y] = "Sorry, your file was not uploaded. <br>";
+                $errorcode = 1;
+            // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["rev$x"]["tmp_name"], $uploadfile)) {
+                    echo "The file ". basename( $_FILES["rev$x"]["name"]). " has been uploaded.";
+                } else {
+                    $uploadmsg5[$y] = "Sorry, there was an error uploading your file. <br>";
+                    $errorcode = 1;
+                }
             }
         } 
 
         $uploadOcheck[$y] = $uploadOk;
-        $y++;
+        $revdbname[$y] = $revnewname;
 
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-        } else {
-            if (move_uploaded_file($_FILES["rev$x"]["tmp_name"], $uploadfile)) {
-                echo "The file ". basename( $_FILES["rev$x"]["name"]). " has been uploaded.";
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
+        $y++;
 
     }
 
-    echo $uploadOcheck[0] . "<br>";
-    echo $uploadOcheck[1] . "<br>";
-    echo $uploadOcheck[2] . "<br>";
-    echo $uploadOcheck[3] . "<br>";
 
+    if($errorcode == 0) {
+        $sql_savereview = "INSERT INTO addreview (userid, restaurantid, star, comment, pic1, pic2, pic3, pic4) VALUES ('$userid','$restaurantid','$starrate','$reviewcomment','$revdbname[0]','$revdbname[1]','$revdbname[2]','$revdbname[3]')";
 
-
-
-
-    // if($errorcode == 0) {
-    //     $sql_savereview = "INSERT INTO addreview (userid, restaurantid, star, comment, pic1, pic2, pic3, pic4) VALUES ('$userid','$restaurantid','$starrate','$reviewcomment','$rev1','$rev2','$rev3','$rev4')";
-
-    //     if ($conn->query($sql_savereview) === TRUE) {
-    //         header("Location: userrestaurantdetail.php");
-    //     } else {
-    //         $errmsg = "Error during Adding Review: " . $conn->error;
-    //     }
-    // }
+        if ($conn->query($sql_savereview) === TRUE) {
+            header("Location: userrestaurantdetail.php");
+        } else {
+            $errmsg = "Error during Adding Review: " . $conn->error . "<br>";
+        }
+    }
 }
 
 ?>
@@ -186,14 +205,15 @@ if(isset($_POST["reviewsubmit"])) {
                             <input type="file" name="rev2"><br><br>
                             <input type="file" name="rev3"><br><br>
                             <input type="file" name="rev4"><br><br>
-                            <span style="color: red;"><?php echo $errmsg; ?></span>
+                            <span style="color: red;"><?php echo $errmsg1; echo $errmsg; ?></span>
                             <span style="color: red;">
                                 <?php 
                                     for($z = 0; $z <= 3 ; $z++){
                                         echo $uploadmsg1[$z];
                                         echo $uploadmsg2[$z]; 
                                         echo $uploadmsg3[$z]; 
-                                        echo $uploadmsg4[$z];   
+                                        echo $uploadmsg4[$z];
+                                        echo $uploadmsg5[$z];   
                                     }
                                 ?>
                             </span>
