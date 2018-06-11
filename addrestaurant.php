@@ -1,6 +1,5 @@
-
-
 <?php
+  session_start();
   include 'dblammy.php';
 
   $error = 0;
@@ -20,12 +19,22 @@
   $endhour = $_POST["endhour"];
   $cost = $_POST["cost"];
 
+
+        $add_pic_error = "";  //後でRyanにコードもらう  
         $add_name_error = "";
         $add_type_error = "";
         $add_address_error = "";
         $add_tel_error = "";
 
-        unset($add_name_error, $add_type_error, $add_address_error, $add_tel_error);
+        unset($add_pic_error, $add_name_error, $add_type_error, $add_address_error, $add_tel_error);
+
+            if (getimagesize($pic1, $pic2, $pic3, $pic4) > 200000) {
+                $add_pic_error = "Sorry, your file is too large.";
+                $error = 1;
+                }  elseif ($add_pic_error != "jpg" && $add_pic_error != "png" ) {
+                echo "Sorry, please set JPG or PNG.";
+                $error = 1;
+                }
 
             if(mb_strlen($name) < 1) {
 
@@ -97,22 +106,23 @@
                 $error = 1;
                 } 
             
+              if ($error == 0 ) {
+                      $sql = "INSERT INTO userinfo(name, email, pic1, pic2, pic3, pic4, map, type, address, tel, openhour, endhour, cost)
+                      VALUES ('$name', '$email', '$pic1', '$pic2', '$pic3', '$pic4', '$map', '$type', '$address', '$tel', '$openhour', '$endhour', '$cost')";
+
+                if($conn ->query($sql)){
     
-        $sql = "INSERT INTO restaurant(name, pic1, pic2, pic3, pic4, map, type, address, tel, openhour, endhour, cost)
-        VALUES ('$name', '$pic1', '$pic2', '$pic3', '$pic4', '$map', '$type', '$address', '$tel', '$openhour', '$endhour', '$cost')";
+                      header("Location: adminhome.php");
+                      } else {
+                      echo "Error:" . $sql . "<br>" . $conn->error;
+                      }
+                      } else {
+                      $error = 1;
+    
+                      }    
 
-        if($conn ->query($sql) === TRUE) {
-        header("Location: adminhome.php");
+                      }
 
-        } else {
-        $error = 1;
-        echo "Error:" . $sql . "<br>" . $conn->error;
-        
-        }
-
-        
-	 
-    }
 
 ?>
  
@@ -132,7 +142,7 @@
         <hr>
         	<div class="add">
 				<h1>Add restaurant</h1>
-    				<form action="addrestaurant.php" method="POST">
+    				<form action="addrestaurant.php" method="POST" enctype="multipart/form-data">
         				<div class="form">	
         					<input type="text" name="name" placeholder="Restaurant Name" class="box" required><br><br>
         					   <input type="file" name="pic1" placeholder="pic1"  required><br>
@@ -148,6 +158,12 @@
                   			   <input type="text" name="cost" placeholder="Average Cost" class="box" required><br><br>
 
                                 <?php
+
+
+                                    if (isset($add_pic_error)) {
+                                        echo "<span style='color:#ff0000;'>$add_pic_error</span><br>";
+                                    }
+
                                     if (isset($add_name_error)) {
                                         echo "<span style='color:#ff0000;'>$add_name_error</span><br>";
                                     }
@@ -163,6 +179,8 @@
                                     if (isset($add_tel_error)) {
                                         echo "<span style='color:#ff0000;'>$add_tel_error</span><br>";
                                     }
+
+
 
 
                                 ?>
