@@ -30,7 +30,7 @@ session_start();
                     $error = 1;
                     
                     }   
-            }       
+                   
       
             $sql = "SELECT * FROM userinfo WHERE email = '$email' AND pass1 = '$pass1'";
             $result = $conn->query($sql);
@@ -46,6 +46,8 @@ session_start();
             } else { 
                 $error = 1;
             }
+        }
+        
      
         
 ?>
