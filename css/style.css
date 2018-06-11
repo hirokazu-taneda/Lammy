@@ -103,13 +103,15 @@ body {
     float: left;
 }
 
-input[type=text], input[type=email],  input[type=password]{
+input[type=text], input[type=email], input[type=password]{
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: 2px solid gray;
   max-width: 250px;
 }
+
+
 
 .search-container button {
   float: right;
@@ -241,14 +243,23 @@ h3 {
 	width: 200px;
 }
 
-.mypage input[type=text], .mypage input[type=password], .mypage input[type=email] {
+.mypage input[type=text], .mypage input[type=password], .mypage input[type=email], .mypage input[type=file], .mypage textarea {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
-  border: 1px solid #f05557;
+  border: 1px solid gray;
   border-radius: 5px;
+}
+
+.mypage input[type=text], .mypage input[type=password], .mypage input[type=email] {
   width: 250px;
 }
+
+
+.mypage input[type=file] {
+  width: 500px;
+}
+
 
 .mypage input[type=number] {
   padding: 6px;
@@ -299,6 +310,13 @@ h3 {
 .button2:hover {
     background-color: white; 
     color: #757575; 
+}
+
+.button3{
+  margin-left: 30px;
+    background-color: #dddddd;
+    color: #262626;
+    border: 2px solid #262626;
 }
 
 .logout{
@@ -645,3 +663,49 @@ h4 {
 
 /* Add a grey background color on mouse-over */
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+
+/*add review star rating system*/
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star starrate Widget *****/
+
+.starrate { 
+  border: none;
+  float: left;
+}
+
+.starrate > input { margin: -20px; opacity: 0;} 
+.starrate > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.starrate > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.starrate > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.starrate > input:checked ~ label, /* show gold star when clicked */
+.starrate:not(:checked) > label:hover, /* hover current star */
+.starrate:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.starrate > input:checked + label:hover, /* hover current star when changing starrate */
+.starrate > input:checked ~ label:hover,
+.starrate > label:hover ~ input:checked ~ label, /* lighten current selection */
+.starrate > input:checked ~ label:hover ~ label { color: #FFED85;  } 
