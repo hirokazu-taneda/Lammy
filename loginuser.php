@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -17,7 +16,6 @@ session_start();
             unset($login_pass_error, $login_email_error);
 
             if(mb_strlen($pass1) < 6) {
-
                     $login_pass_error = " Please set minimum of 6 characters.";
                     $error = 1;
                     } elseif(mb_strlen($pass1) > 10) {
@@ -28,7 +26,6 @@ session_start();
                         
                     $login_email_error = "Email and Password did not match. Please try again.";
                     $error = 1;
-                    
                     }   
                    
       
@@ -91,7 +88,7 @@ session_start();
                     <button type="submit" class="mainbutton submit" name="submit">Login</button><br><br>
                 </form>
                     
-                    <b>If you forget your password<a href="forgetpass.php"> Click</a>here.</b><br><br>
+                    <b>If you forget your password<a href="forgetpass.php"> Click </a>here.</b><br><br>
 
                         <input type="button" class="mainbutton register" value="Register" onClick="location.href='register.php'">
         </div>
