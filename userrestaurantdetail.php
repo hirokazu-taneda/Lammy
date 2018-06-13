@@ -3,10 +3,9 @@ session_start();
 
 include 'dblammy.php';
 
-$restaurantid = 1;
+$restaurantid = $_GET["restaurantid"];
 $userid = 3;
 $buttondisable = "class='mainbutton button2'";
-
 
 
     //Get User information 
@@ -69,7 +68,7 @@ $buttondisable = "class='mainbutton button2'";
                 <div class="menubar">
                     <ul>
                       <li><a href="userhome.php">Home</a></li>
-                      <li><a class="active" href="#MyPage">My Page</a></li>
+                      <li><a href="#MyPage">My Page</a></li>
                       <li><a href="#Inquiry">Inquiry</a></li>
                     </ul>
                 </div>

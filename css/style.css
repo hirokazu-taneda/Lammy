@@ -629,7 +629,6 @@ h4 {
 
 
 .tabcontent1 {
-    display: none;
     padding: 6px 12px;
     background-color: #ffffff;
     height: 560px;
@@ -641,11 +640,16 @@ h4 {
     animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
 
+.pagicontainer {
+  width: 700px;
+  float: left;
+  align: center;
+}
+
 /* Pagination links */
 .paginationdiv {
-  width: 500px;
-  margin-left: 200px;
-  float: left;
+  width: 30%;
+  margin: 0 auto;
 }
 
 .pagination a {
@@ -664,6 +668,8 @@ h4 {
 
 /* Add a grey background color on mouse-over */
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
 
 
 
@@ -721,4 +727,12 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .alink:hover {
   color: #0089b7;
+}
+
+.resname {
+  float:left; 
+  margin-left:10px; 
+  font-size:16px; 
+  height: 40px; 
+  padding-top:12px;
 }
