@@ -103,7 +103,7 @@ body {
     float: left;
 }
 
-input[type=text], input[type=email], input[type=password]{
+input[type=text], input[type=email],  input[type=password], input[type=time]{
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -363,7 +363,7 @@ hr {
     width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px; 
+    margin-top: 30px; 
     text-align: center;
 
     
@@ -408,10 +408,13 @@ hr {
     width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px; 
+    margin-top: 30px; 
     text-align: center;
 }
 
+.box{
+  width: 400px;
+}
 
 /*admin tab and list css*/
 .tabcontainer{
@@ -523,6 +526,7 @@ div.tab button.active {
 .bRight {
   text-align: right;
 }
+
 
 .restaurantpics {
   width: 650px;
