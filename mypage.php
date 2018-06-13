@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="images/favicon.png" />
     </head>
     <body>
         <div class="maindiv center">
@@ -22,7 +23,7 @@
                     <img src="images/user_profpic/usericon.png" class="userprofpic">
                     <form>
                         <input type="text" name="name" placeholder="Name"><br>
-                        <input type="text" name="email" placeholder="Email"><br>
+                        <input type="email" name="email" placeholder="Email" required><br>
                         <input type="password" name="password" placeholder="Password"><br>
                         <input type="password" name="cpassword" placeholder="Confirm Password"><br>
                         <p class="plabel">Gender

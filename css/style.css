@@ -31,9 +31,19 @@ body {
     margin: auto;
 }
 
+.center1 {
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+}
+
 #header {
 	width: 980px;
-	height: 80px;
+	height: 100px;
 }
 
 #adminheader {
@@ -101,6 +111,8 @@ input[type=text], input[type=email],  input[type=password], input[type=time]{
   max-width: 250px;
 }
 
+
+
 .search-container button {
   float: right;
   padding: 6px 10px;
@@ -110,6 +122,7 @@ input[type=text], input[type=email],  input[type=password], input[type=time]{
   font-size: 17px;
   border: none;
   cursor: pointer;
+  height: 36px;
 }
 
 .search-container button:hover {
@@ -131,12 +144,12 @@ input[type=text], input[type=email],  input[type=password], input[type=time]{
 }
 
 .restaurantcard, .rescard_top, .rescard_bottom {
-	width: 600px;
+	width: 700px;
 	float: left;
 }
 
 .rescontainer {
-	width: 600px;
+	width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -144,6 +157,7 @@ input[type=text], input[type=email],  input[type=password], input[type=time]{
 .restaurantcard {
 	border-radius: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 20px;
 }
 
 .res_profpic {
@@ -157,7 +171,7 @@ input[type=text], input[type=email],  input[type=password], input[type=time]{
 }
 
 .rescard_info {
-	width: 300px;
+	width: 390px;
 }
 
 #rescard_map {
@@ -206,9 +220,17 @@ h3 {
 	text-align: center;
 }
 
+.mypage1 {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 #maincontent {
 	width: 980px;
   float: left;
+  background-color: white; 
 }
 
 #footer {
@@ -223,14 +245,23 @@ h3 {
 	width: 200px;
 }
 
-.mypage input[type=text], .mypage input[type=password] {
+.mypage input[type=text], .mypage input[type=password], .mypage input[type=email], .mypage input[type=file], .mypage textarea {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
-  border: 1px solid #f05557;
+  border: 1px solid gray;
   border-radius: 5px;
+}
+
+.mypage input[type=text], .mypage input[type=password], .mypage input[type=email] {
   width: 250px;
 }
+
+
+.mypage input[type=file] {
+  width: 500px;
+}
+
 
 .mypage input[type=number] {
   padding: 6px;
@@ -281,6 +312,13 @@ h3 {
 .button2:hover {
     background-color: white; 
     color: #757575; 
+}
+
+.button3{
+  margin-left: 30px;
+    background-color: #dddddd;
+    color: #262626;
+    border: 2px solid #262626;
 }
 
 .logout{
@@ -336,7 +374,6 @@ hr {
     background-color: #f44336;
     color: white;
     border: 2px solid #f44336;
-    
 }
 
 .submit:hover {
@@ -378,7 +415,6 @@ hr {
 .box{
   width: 400px;
 }
-
 
 /*admin tab and list css*/
 .tabcontainer{
@@ -489,4 +525,218 @@ div.tab button.active {
 
 .bRight {
   text-align: right;
+}
+
+
+.restaurantpics {
+  width: 650px;
+  float: left;
+  padding-left: 15px;
+}
+
+#detail_map {
+  width: 200px;
+  height: 150px;
+  float: left;
+  border: 1px solid black;
+}
+
+.resdetailcontent {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.restaurantdetail {
+  width: 650px;
+  float: left;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.rev_card {
+  margin-top: 20px;
+  width: 650px;
+  float: left;
+  border: 2px solid #666666;
+}
+
+.rev_userpic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.rev_left {
+  width: 100px;
+  float: left;
+  text-align: center;
+}
+
+.rev_right {
+  width: 500px;
+  float: left;
+  padding:5px;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+  color: #757575;
+}
+
+.rating1 {
+  display: inline;
+  float: left;
+}
+
+.rev_comment {
+  margin-top: 5px;
+  width: 450px;
+  color: #757575;
+  float: left;
+  font-size: 14px;
+}
+
+.rev_pics {
+  margin-top: 5px;
+  width: 450px;
+  float: left;
+}
+
+.rev_top {
+  width: 650px;
+  float: left;
+  text-align: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.rev_top, .restaurantpics, .restaurantdetail, .rev_card {
+  margin-left: 25px;
+}
+.fa-heart {
+  color: #F05557;
+}
+
+.rev_left1 {
+  width: 200px;
+  float: left;
+}
+
+.heartdiv {
+  width: 150px;
+  float:left;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+
+.tabcontent1 {
+    padding: 6px 12px;
+    background-color: #ffffff;
+    height: 560px;
+    overflow-y: auto;
+}
+
+.tabcontent1 {
+    -webkit-animation: fadeEffect 0.50s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+.pagicontainer {
+  width: 700px;
+  float: left;
+  align: center;
+}
+
+/* Pagination links */
+.paginationdiv {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+
+
+
+/*add review star rating system*/
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star starrate Widget *****/
+
+.starrate { 
+  border: none;
+  float: left;
+}
+
+.starrate > input { margin: -20px; opacity: 0;} 
+.starrate > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.starrate > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.starrate > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.starrate > input:checked ~ label, /* show gold star when clicked */
+.starrate:not(:checked) > label:hover, /* hover current star */
+.starrate:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.starrate > input:checked + label:hover, /* hover current star when changing starrate */
+.starrate > input:checked ~ label:hover,
+.starrate > label:hover ~ input:checked ~ label, /* lighten current selection */
+.starrate > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+.alink {
+  color: #00bfff;
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.alink:hover {
+  color: #0089b7;
+}
+
+.resname {
+  float:left; 
+  margin-left:10px; 
+  font-size:16px; 
+  height: 40px; 
+  padding-top:12px;
 }
