@@ -3,13 +3,28 @@ session_start();
 
 include 'dblammy.php';
 
+if($_SESSION["userid"] == ""){
+    header("Location: loginuser.php");
+}
+
+$userid = $_SESSION["userid"];
+
+$sql_getuserinfo = "SELECT * FROM userinfo WHERE userid='$userid'";
+$getuserinfo = $conn->query($sql_getuserinfo);
+$rowuserinfo = $getuserinfo->fetch_assoc();
+
+$profpic = $rowuserinfo["upfile"];
+
+if($profpic == ""){
+    $profpic = "usericon.png";
+}
+
 if(isset($_GET["searchname"])){
     $searchname = $_GET["searchname"];
 
     $sql_restaurantsearch = "SELECT * FROM restaurant WHERE name LIKE '%$searchname%'";
     $restaurantsearch = $conn->query($sql_restaurantsearch);
 }
-
 
 ?>
 
@@ -25,7 +40,7 @@ if(isset($_GET["searchname"])){
         <div class="maindiv center">
             <div id="header">
                 <img src="images/lammylogo.png" width="200" style="margin: 5 0 5 10;">
-                <a href="mypage.php"><img src="images/user_profpic/usericon.png" width="50" style="border-radius: 50%; margin-left: 700px;" ></a>
+                <a href="mypage.php"><img src="images/user_profpic/<?php echo $profpic; ?>" width="50" height="50" style="border-radius: 50%; margin-left: 700px;" ></a>
                 <div class="menubar">
                     <ul>
                       <li><a class="active" href="#home">Home</a></li>
@@ -74,7 +89,7 @@ if(isset($_GET["searchname"])){
                         ?>
                                     <div class="restaurantcard">
                                         <div class="rescard_top">
-                                            <h3><?php echo $name; ?></h3>
+                                            <a href="userrestaurantdetail.php?restaurantid=<?php echo $restaurantid; ?>"><h3><?php echo $name; ?></h3></a>
                                             <div class="rating">
                                                 <span class="fa fa-star <?php if($star >= 1){ echo 'checked'; }?>"></span>
                                                 <span class="fa fa-star <?php if($star >= 2){ echo 'checked'; }?>"></span>
@@ -127,7 +142,7 @@ if(isset($_GET["searchname"])){
                         ?>
                                     <div class="restaurantcard">
                                         <div class="rescard_top">
-                                            <h3><?php echo $name; ?></h3>
+                                            <a href="userrestaurantdetail.php?restaurantid=<?php echo $restaurantid; ?>" class="alink"><h3><?php echo $name; ?></h3></a>
                                             <div class="rating">
                                                 <span class="fa fa-star <?php if($star >= 1){ echo 'checked'; }?>"></span>
                                                 <span class="fa fa-star <?php if($star >= 2){ echo 'checked'; }?>"></span>

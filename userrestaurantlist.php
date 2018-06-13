@@ -3,6 +3,22 @@ session_start();
 
 include 'dblammy.php';
 
+if($_SESSION["userid"] == ""){
+    header("Location: loginuser.php");
+}
+
+$userid = $_SESSION["userid"];
+
+$sql_getuserinfo = "SELECT * FROM userinfo WHERE userid='$userid'";
+$getuserinfo = $conn->query($sql_getuserinfo);
+$rowuserinfo = $getuserinfo->fetch_assoc();
+
+$profpic = $rowuserinfo["upfile"];
+
+if($profpic == ""){
+    $profpic = "usericon.png";
+}
+
 $check ="";
 
     if (isset($_GET['pageno'])) {
@@ -43,7 +59,7 @@ $check ="";
         <div class="maindiv center">
             <div id="header">
                 <img src="images/lammylogo.png" width="200" style="margin: 5 0 5 10;">
-                <a href="mypage.php"><img src="images/user_profpic/usericon.png" width="50" style="border-radius: 50%; margin-left: 700px;" ></a>
+                <a href="mypage.php"><img src="images/user_profpic/<?php echo $profpic; ?>" width="50" height="50" style="border-radius: 50%; margin-left: 700px;" ></a>
                 <div class="menubar">
                     <ul>
                       <li><a href="userhome.php">Home</a></li>
