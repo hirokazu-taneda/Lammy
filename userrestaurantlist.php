@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+include 'dblammy.php';
+
+$check ="";
+
+    if (isset($_GET['pageno'])) {
+        $pageno = $_GET['pageno'];
+    } else {
+        $pageno = 1;
+    }
+    $no_of_records_per_page = 10;
+    $offset = ($pageno-1) * $no_of_records_per_page;
+
+    $conn=mysqli_connect("127.0.0.1","root","Framgia@123","lammy");
+    // Check connection
+    if (mysqli_connect_errno()){
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        die();
+    }
+
+    $total_pages_sql = "SELECT COUNT(*) FROM restaurant";
+    $result = mysqli_query($conn,$total_pages_sql);
+    $total_rows = mysqli_fetch_array($result)[0];
+    $total_pages = ceil($total_rows / $no_of_records_per_page);
+
+    $sql = "SELECT * FROM restaurant LIMIT $offset, $no_of_records_per_page";
+    $res_data = mysqli_query($conn,$sql);
+
+
+?>
+
 <html>
     <head>
         <title>Restaurant List</title>
@@ -10,10 +43,11 @@
         <div class="maindiv center">
             <div id="header">
                 <img src="images/lammylogo.png" width="200" style="margin: 5 0 5 10;">
+                <a href="mypage.php"><img src="images/user_profpic/usericon.png" width="50" style="border-radius: 50%; margin-left: 700px;" ></a>
                 <div class="menubar">
                     <ul>
                       <li><a href="userhome.php">Home</a></li>
-                      <li><a class="active" href="#MyPage">My Page</a></li>
+                      <li><a href="mypage.php">My Page</a></li>
                       <li><a href="#Inquiry">Inquiry</a></li>
                     </ul>
                 </div>
@@ -21,89 +55,61 @@
             <div id="maincontent">
                 <div class="mypage1">
                     <h3>Restaurant List</h3>
-                    <?php 
-                    for($x=1; $x<=6; $x++){
-                    ?>
-                    <div id="res<?php echo $x; ?>" class="tabcontent1">
+                    <div id="res1" class="tabcontent1">
                         <table class="list">
                             <tr>
                                 <th style="width: 550px;"class="adminlistth"></th>
                             </tr> 
+                            <?php
+                                while($row = mysqli_fetch_array($res_data)){
+                                    $restaurantid = $row["restaurantid"];
+                                    $name = $row["name"];
+                                    $pic1 = $row["pic1"];
+                            ?>
                             <tr class="listtr">
-                                <td class="listtd">Restaurant A</td>
+                                <td class="listtd">
+                                    <div style="float:left;"><img src="images/resto_mainpic/<?php echo $pic1; ?>" width="40" style="border-radius: 50%;"></div>
+                                   <a href="userrestaurantdetail.php?restaurantid=<?php echo $restaurantid; ?>" style="color:#008dbc;" ><div class="resname"><?php echo $name; ?></div></a>
+                                </td>
                             </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant B</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant C</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant D</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant E</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant F</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant G</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant H</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant I</td>
-                            </tr>
-                            <tr class="listtr">
-                                <td class="listtd">Restaurant J</td>
-                            </tr>                            
+                            <?php
+                                }
+                            ?>     
                         </table>
                     </div>
-                    <?php
-                    }
-                    ?>
-                    <div class="paginationdiv">
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a class="paglinks" onclick="openCity(event, 'res1')">1</a>
-                            <a class="paglinks" onclick="openCity(event, 'res2')">2</a>
-                            <a class="paglinks" onclick="openCity(event, 'res3')">3</a>
-                            <a class="paglinks" onclick="openCity(event, 'res4')">4</a>
-                            <a class="paglinks" onclick="openCity(event, 'res5')">5</a>
-                            <a class="paglinks" onclick="openCity(event, 'res6')">6</a>
-                            <a href="#">&raquo;</a>
+                    <div class="pagicontainer"> 
+                        <div class="paginationdiv">
+                            <div class="pagination">
+                                <?php
+                                    if($pageno == 1){
+                                        echo "<a>&laquo;</a>";
+                                    } else {
+                                        $before = $pageno-1;
+                                        echo "<a href='userrestaurantlist.php?pageno=$before'>&laquo;</a>";
+                                    }
+                                    for($y = 1; $y <= $total_pages; $y++){
+                                        if($pageno == $y){
+                                            $check = "class='active'";
+                                        }
+                                        echo "<a href='userrestaurantlist.php?pageno=$y' $check>$y</a>";
+                                        $check = "";
+                                    }
+                                    if($pageno == $total_pages){
+                                        echo "<a>&raquo;</a>";
+                                    } else {
+                                        $after = $pageno+1;
+                                        echo "<a href='userrestaurantlist.php?pageno=$after'>&raquo;</a>";
+                                    }
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="footer">
                 <hr>
-                <button class="mainbutton logout">Logout</button>
+                <a href="logout.php"><button class="mainbutton logout">Logout</button></a>
             </div>
         </div>     
     </body>
 </html>
-
-<script>
-openCity(event, "res1")
-function openCity(evt, cityName) {
-    var i, tabcontent1, paglinks;
-    tabcontent1 = document.getElementsByClassName("tabcontent1");
-    for (i = 0; i < tabcontent1.length; i++) {
-        tabcontent1[i].style.display = "none";
-    }
-    paglinks = document.getElementsByClassName("paglinks");
-    for (i = 0; i < tabcontent1.length; i++) {
-        paglinks[i].classList.remove("active");
-    }
-    document.getElementById(cityName).style.display = "block";
-    if (evt) {evt.currentTarget.classList.add("active");}
-}
-</script>
-
-<script>
-var mybtn = document.getElementsByClassName("paglinks")[0];
-mybtn.click();
-</script>
