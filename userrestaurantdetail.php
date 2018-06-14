@@ -30,6 +30,7 @@ if($profpic == ""){
     $row = $getuser->fetch_assoc();
     
         $username = $row["name"];
+        $upfile = $row["upfile"];
 
     //Get restaurant information from database.
     $sql_getrestaurant = "SELECT * FROM restaurant WHERE restaurantid='$restaurantid'";
@@ -148,7 +149,7 @@ if($profpic == ""){
                     ?>
                     <div class="rev_card">
                         <div class="rev_left">
-                            <img class="rev_userpic"  src="images/user_profpic/reviewicon.jpg"><br>
+                            <img class="rev_userpic"  src="images/user_profpic/<?php echo $upfile; ?>"><br>
                             <h4><?php echo $rowuser["name"]; ?></h4>
                         </div>
                         <div class="rev_right">
