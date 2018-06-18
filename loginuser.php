@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -28,7 +27,7 @@ session_start();
                         
                     $login_email_error = "Email and Password did not match. Please try again.";
                     $error = 1;
-                    
+
                     }   
                    
       
@@ -91,7 +90,7 @@ session_start();
                     <button type="submit" class="mainbutton submit" name="submit">Login</button><br><br>
                 </form>
                     
-                    <b>If you forget your password<a href="forgetpass.php"> Click</a>here.</b><br><br>
+                    <b>If you forget your password<a href="forgetpass.php"> Click </a>here.</b><br><br>
 
                         <input type="button" class="mainbutton register" value="Register" onClick="location.href='register.php'">
         </div>

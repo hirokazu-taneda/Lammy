@@ -3,21 +3,12 @@ session_start();
 
 include 'dblammy.php';
 
-//$restaurantid = $_GET["restaurantid"];
+if($_SESSION["userid"] == ""){
+    header("Location: loginuser.php");
+}
 
-$restaurantid = 1;
-$userid = 3;
-$errorcode = 0;
-$errmsg = "";
-$errmsg1 = "";
-$y = 0;
-
-$uploadmsg1 = array("", "", "", "");
-$uploadmsg2 = array("", "", "", "");
-$uploadmsg3 = array("", "", "", "");
-$uploadmsg4 = array("", "", "", "");
-$uploadmsg5 = array("", "", "", "");
-
+if(isset($_GET["restaurantid"])){
+    $restaurantid = $_GET["restaurantid"];
 
     $sql_getrestaurant = "SELECT * FROM restaurant WHERE restaurantid='$restaurantid'";
     $getrestaurant = $conn->query($sql_getrestaurant);
@@ -39,6 +30,33 @@ $uploadmsg5 = array("", "", "", "");
         $star = $row["star"];
         $map = $row["map"];
         $heart = $row["heart"];
+}
+
+$errorcode = 0;
+$errmsg = "";
+$errmsg1 = "";
+$y = 0;
+
+$userid = $_SESSION["userid"];
+
+$sql_getuserinfo = "SELECT * FROM userinfo WHERE userid='$userid'";
+$getuserinfo = $conn->query($sql_getuserinfo);
+$rowuserinfo = $getuserinfo->fetch_assoc();
+
+$profpic = $rowuserinfo["upfile"];
+
+if($profpic == ""){
+    $profpic = "usericon.png";
+}
+
+$uploadmsg1 = array("", "", "", "");
+$uploadmsg2 = array("", "", "", "");
+$uploadmsg3 = array("", "", "", "");
+$uploadmsg4 = array("", "", "", "");
+$uploadmsg5 = array("", "", "", "");
+
+
+
 
 
 if(isset($_POST["reviewsubmit"])) {
@@ -50,6 +68,7 @@ if(isset($_POST["reviewsubmit"])) {
         $errorcode = 1;
     }
     
+    $restaurantid = $_POST["restaurantid"];
     $review = $_POST["reviewcomment"];
     $reviewcomment = addslashes($review);
     $rev[0] = $_FILES["rev1"]["name"];
@@ -57,6 +76,26 @@ if(isset($_POST["reviewsubmit"])) {
     $rev[2] = $_FILES["rev3"]["name"];
     $rev[3] = $_FILES["rev4"]["name"];
 
+    $sql_getrestaurant = "SELECT * FROM restaurant WHERE restaurantid='$restaurantid'";
+    $getrestaurant = $conn->query($sql_getrestaurant);
+    
+    $row = $getrestaurant->fetch_assoc();
+    
+    $restaurantid = $row["restaurantid"];
+    $name = $row["name"];
+    $type = $row["type"];
+    $address = $row["address"];
+    $tel = $row["tel"];
+    $openhour = $row["openhour"];
+    $endhour = $row["endhour"];
+    $cost = $row["cost"];
+    $pic1 = $row["pic1"];
+    $pic2 = $row["pic2"];
+    $pic3 = $row["pic3"];
+    $pic4 = $row["pic4"];
+    $star = $row["star"];
+    $map = $row["map"];
+    $heart = $row["heart"];
 
     //checking for multibyte in 
     if (mb_strlen($review) != strlen($review)) {
@@ -149,7 +188,7 @@ if(isset($_POST["reviewsubmit"])) {
         $sql_savereview = "INSERT INTO addreview (userid, restaurantid, star, comment, pic1, pic2, pic3, pic4) VALUES ('$userid','$restaurantid','$starrate','$reviewcomment','$revdbname[0]','$revdbname[1]','$revdbname[2]','$revdbname[3]')";
 
         if ($conn->query($sql_savereview) === TRUE) {
-            header("Location: userrestaurantdetail.php");
+            header("Location: userrestaurantdetail.php?restaurantid=$restaurantid");
         } else {
             $errmsg = "Error during Adding Review: " . $conn->error . "<br>";
         }
@@ -171,6 +210,7 @@ if(isset($_POST["reviewsubmit"])) {
         <div class="maindiv center">
             <div id="header">
                 <img src="images/lammylogo.png" width="200" style="margin: 5 0 5 10;">
+                <a href="mypage.php"><img src="images/user_profpic/<?php echo $profpic; ?>" width="50" height="50" style="border-radius: 50%; margin-left: 700px;" ></a>
                 <div class="menubar">
                     <ul>
                       <li><a href="userhome.php">Home</a></li>
@@ -183,6 +223,7 @@ if(isset($_POST["reviewsubmit"])) {
                 <div class="resdetailcontent">
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
                         <div class="rev_top">
+                            <input type="hidden" name="restaurantid" value="<?php echo $restaurantid; ?>">
                             <h3><?php echo $name; ?></h3>
                             <div class="rating">
                                 <fieldset class="starrate">
@@ -226,7 +267,7 @@ if(isset($_POST["reviewsubmit"])) {
             </div>
             <div id="footer">
                 <hr>
-                <button class="mainbutton logout">Logout</button>
+                <a href="logout.php"><button class="mainbutton logout">Logout</button></a>
             </div>
         </div>     
     </body>

@@ -1,9 +1,10 @@
 <?php
- 
+
   session_start();
   include 'dblammy.php';
 
   $error = 0;
+
   if (isset($_POST["submit"])){
 
   $name = $_POST["name"];
@@ -18,6 +19,7 @@
   $openhour = $_POST["openhour"];
   $endhour = $_POST["endhour"];
   $cost = $_POST["cost"];
+
 
   $add_name_error = "";
   $add_type_error = "";
@@ -93,6 +95,112 @@ if($conn ->query($sql) === TRUE) {
   echo "Error:" . $sql . "<br>" . $conn->error;
 }
 }
+=======
+
+        $add_pic_error = "";  //後でRyanにコードもらう  
+        $add_name_error = "";
+        $add_type_error = "";
+        $add_address_error = "";
+        $add_tel_error = "";
+
+        unset($add_pic_error, $add_name_error, $add_type_error, $add_address_error, $add_tel_error);
+
+            if (getimagesize($pic1, $pic2, $pic3, $pic4) > 200000) {
+                $add_pic_error = "Sorry, your file is too large.";
+                $error = 1;
+                }  elseif ($add_pic_error != "jpg" && $add_pic_error != "png" ) {
+                echo "Sorry, please set JPG or PNG.";
+                $error = 1;
+                }
+
+            if(mb_strlen($name) < 1) {
+
+                $add_name_error = " Please set name minimum of 1 characters.";
+                $error = 1;
+                } elseif(mb_strlen($name) > 50) {
+
+                $add_name_error = " Please specify up to 50 words only.";
+                $error = 1;
+                } elseif (!preg_match("/^[a-zA-Z0-9]+$/", $name)) {
+                
+                $add_name_error = "Please type name using half size alphanumeric characters.";
+                $error = 1;
+                } 
+
+            if(mb_strlen($type) < 1) {
+
+                $add_type_error = " Please set type of food minimum of 1 characters.";
+                $error = 1;
+                } elseif(mb_strlen($type) > 20) {
+
+                $add_type_error = " Please specify up to 20 words only.";
+                $error = 1;
+                } elseif (!preg_match("/^[a-zA-Z0-9]+$/", $type)) {
+                
+                $add_type_error = "Please input type of food using half size alphanumeric characters.";
+                $error = 1;
+                } 
+
+            if(mb_strlen($address) < 1) {
+
+                $add_address_error = " Please set address minimum of 1 characters.";
+                $error = 1;
+                } elseif(mb_strlen($address) > 50) {
+
+                $add_address_error = " Please specify up to 50 words only.";
+                $error = 1;
+                } elseif (!preg_match("/^[a-zA-Z0-9]+$/", $address)) {
+                
+                $add_address_error = "Please type address using half size alphanumeric characters.";
+                $error = 1;
+                } 
+
+            if(mb_strlen($tel) < 1) {
+
+                $add_tel_error = " Please set number minimum of 1 characters.";
+                $error = 1;
+                } elseif(mb_strlen($tel) > 15) {
+
+                $add_tel_error = " Please specify up to 15 numbers only.";
+                $error = 1;
+                } elseif (!preg_match("/^[0-9]+$/", $tel)) {
+                
+                $add_tel_error = "Please type number.";
+                $error = 1;
+                } 
+
+            if(mb_strlen($cost) < 1) {
+
+                $add_cost_error = " Please set cost minimum of 1 characters.";
+                $error = 1;
+                } elseif(mb_strlen($cost) > 10) {
+
+                $add_cost_error = " Please specify up to 15 numbers only.";
+                $error = 1;
+                } elseif (!preg_match("/^[a-zA-Z0-9]+$/", $tel)) {
+                
+                $add_tel_error = "Please type avarage cost using half size alphanumeric characters.";
+                $error = 1;
+                } 
+            
+              if ($error == 0 ) {
+                      $sql = "INSERT INTO userinfo(name, email, pic1, pic2, pic3, pic4, map, type, address, tel, openhour, endhour, cost)
+                      VALUES ('$name', '$email', '$pic1', '$pic2', '$pic3', '$pic4', '$map', '$type', '$address', '$tel', '$openhour', '$endhour', '$cost')";
+
+                if($conn ->query($sql)){
+    
+                      header("Location: adminhome.php");
+                      } else {
+                      echo "Error:" . $sql . "<br>" . $conn->error;
+                      }
+                      } else {
+                      $error = 1;
+    
+                      }    
+
+                      }
+
+
 
 
 
@@ -164,6 +272,7 @@ if(isset($_POST['map'])){
         	<div class="add">
 
 				<h1>Add restaurant</h1>
+
     				<form action="userhome.php" method="POST">
         				<div class="form"><br>
         					<input type="text" name="name" placeholder="Restaurant Name" required><br>
@@ -235,6 +344,51 @@ if(isset($_POST['map'])){
                   			<input type="time" name="openhour" placeholder="Openhour" required>
                   			<input type="time" name="endhour" placeholder="Endhour" required><br>
                   			<input type="text" name="cost" placeholder="Average Cost" required><br><br>
+=======
+    				<form action="addrestaurant.php" method="POST" enctype="multipart/form-data">
+        				<div class="form">	
+        					<input type="text" name="name" placeholder="Restaurant Name" class="box" required><br><br>
+        					   <input type="file" name="pic1" placeholder="pic1"  required><br>
+        					   <input type="file" name="pic2" placeholder="pic2"  required><br>
+        					   <input type="file" name="pic3" placeholder="pic3"  required><br>
+        					   <input type="file" name="pic4" placeholder="pic4" required><br>	
+                  			   <input type="text" name="map" placeholder="Map" class="box" required><br>
+                               <input type="text" name="type" placeholder="Type of food" class="box" required><br>
+                			   <input type="text" name="address" placeholder="Address" class="box" required><br>
+                  			   <input type="text" name="tel" placeholder="Telephone Number" class="box" required><br>
+                  			   <input type="time" name="openhour" required>
+                  			   <input type="time" name="endhour" required><br>
+                  			   <input type="text" name="cost" placeholder="Average Cost" class="box" required><br><br>
+
+                                <?php
+
+
+                                    if (isset($add_pic_error)) {
+                                        echo "<span style='color:#ff0000;'>$add_pic_error</span><br>";
+                                    }
+
+                                    if (isset($add_name_error)) {
+                                        echo "<span style='color:#ff0000;'>$add_name_error</span><br>";
+                                    }
+
+                                    if (isset($add_type_error)) {
+                                        echo "<span style='color:#ff0000;'>$add_type_error</span><br>";
+                                    }
+
+                                    if (isset($add_address_error)) {
+                                        echo "<span style='color:#ff0000;'>$add_address_error</span><br>";
+                                    }
+
+                                    if (isset($add_tel_error)) {
+                                        echo "<span style='color:#ff0000;'>$add_tel_error</span><br>";
+                                    }
+
+
+
+
+                                ?>
+                  
+
 
                             <?php
                                 if (isset($add_name_error)) {
@@ -275,9 +429,12 @@ if(isset($_POST['map'])){
                      <div id="gmap_canvas" style=" z-index: 1; height: 300px; width: 300px"></div>
                     <div id='map-label'></div>
             </div>
-        <hr>
-        	<button type ="submit" class="mainbutton submit" name="submit">Logout</button>
+        <div id="footer">
+                <hr>
+                <button class="mainbutton logout">Logout</button>
+            </div>
         </div>
+
 
  </body>
  </html>
