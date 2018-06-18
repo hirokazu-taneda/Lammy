@@ -29,7 +29,7 @@ $check ="";
     $no_of_records_per_page = 10;
     $offset = ($pageno-1) * $no_of_records_per_page;
 
-    $conn=mysqli_connect("127.0.0.1","root","Framgia@123","lammy");
+    $conn=mysqli_connect("127.0.0.1","root","","lammy");
     // Check connection
     if (mysqli_connect_errno()){
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -64,7 +64,7 @@ $check ="";
                     <ul>
                       <li><a href="userhome.php">Home</a></li>
                       <li><a href="mypage.php">My Page</a></li>
-                      <li><a href="#Inquiry">Inquiry</a></li>
+                      <li><a href="#Inquiry">Comment</a></li>
                     </ul>
                 </div>
             </div>
