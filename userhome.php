@@ -45,7 +45,7 @@ if(isset($_GET["searchname"])){
                     <ul>
                       <li><a class="active" href="#home">Home</a></li>
                       <li><a href="mypage.php">My Page</a></li>
-                      <li><a href="#Inquiry">Inquiry</a></li>
+                      <li><a href="#Inquiry">Comment</a></li>
                     </ul>
                 </div>
             </div>
