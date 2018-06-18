@@ -16,6 +16,7 @@ session_start();
             unset($login_pass_error, $login_email_error);
 
             if(mb_strlen($pass1) < 6) {
+
                     $login_pass_error = " Please set minimum of 6 characters.";
                     $error = 1;
                     } elseif(mb_strlen($pass1) > 10) {
@@ -26,6 +27,7 @@ session_start();
                         
                     $login_email_error = "Email and Password did not match. Please try again.";
                     $error = 1;
+
                     }   
                    
       
