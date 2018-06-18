@@ -38,7 +38,7 @@ session_start();
 	                </div>
 	                
                 	<div id="restaurant" class="tabcontent">
-                		<button class="mainbutton button2">Add</button>
+                		<input type="button" class="mainbutton button2" value="Add" onClick="location.href='addrestaurant.php'">
 	                    <table class="list">
 	                        <tr>
 	                            <th style="width: 550px;"class="adminlistth"></th>
@@ -156,7 +156,7 @@ session_start();
             <hr>   
             <div id="footer">
                 <hr>
-                <button class="mainbutton logout">Logout</button>
+                <a href="adminlogout.php"><button class="mainbutton logout">Logout</button></a>
             </div>
         </div>     
     </body>
