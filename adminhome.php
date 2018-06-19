@@ -23,6 +23,36 @@ session_start();
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
         <link rel="icon" type="image/png" href="images/favicon.png" />
+
+        <script>
+            function myFunction(userid,myname) {
+                var values = document.getElementById(userid).value;
+                var nameval = document.getElementById(myname).value;                
+                var txt;
+                var r = confirm("Are you sure to delete?");
+                if (r == true) {
+                    document.location.href = "deleterestaurant.php?restaurantid="+values+"";
+                    txt = "";
+                } else {
+                    txt = "";
+                }
+                document.getElementById("demo").innerHTML = txt;
+            }
+
+            function deleteUser(userid,myname) {
+                var values = document.getElementById(userid).value;
+                var nameval = document.getElementById(myname).value;                
+                var txt;
+                var r = confirm("Are you sure to delete?");
+                if (r == true) {
+                    document.location.href = "deleteuser.php?userid="+values+"";
+                    txt = "";
+                } else {
+                    txt = "";
+                }
+                document.getElementById("demo").innerHTML = txt;
+            }
+        </script>
     </head>
     <body>
         <div class="maindiv center">
@@ -51,10 +81,16 @@ session_start();
 	                        	echo "<td class='listtd'>";
 	                            echo $row["name"];
 	                        	echo "</td>";
+	                        		$restaurantid = $row["restaurantid"];
+	                        		$name = $row["name"];
 	                        	echo "<td class='listtd'>
-	                        			<button class='mainbutton button2'>Edit</button>
-	                        			<button class='mainbutton button1'>Delete</button>
-	                        	     </td>";
+	                        			<input type='hidden' name='restaurantid' id='$restaurantid' value='$restaurantid'>
+	                        			<input type='hidden' name='restaurantname' id='$name' value='$name'>
+	                        			<button class='mainbutton button2'>Edit</button>";
+	                        ?>
+	                        			<button class="mainbutton button1" onclick="myFunction('<?php echo $restaurantid; ?>','<?php echo $name; ?>')">Delete</button>
+	                        <?php	
+	                        	echo "</td>";
 	                        	echo "</tr>";
 	                       	  }
 	                         }else {
@@ -77,10 +113,16 @@ session_start();
 	                       		echo "<tr class='listtr'>";
 	                        	echo "<td class='listtd'>";
 	                        	echo $row["name"];
+	                        	$userid = $row["userid"];
+	                        	$username = $row["name"];
 	                        	echo "</td>";
 	                        	echo "<td class='listtd bRight'>
-	                        			<button class='mainbutton button1'>Delete</button>
-	                        		  </td>";
+	                        			<input type='hidden' name='userid' id='$userid' value='$userid'>
+	                        			<input type='hidden' name='username' id='$username' value='$username'>";
+	                        ?>
+	                        			<button class="mainbutton button1" onclick="deleteUser('<?php echo $userid; ?>','<?php echo $username; ?>')">Delete</button>
+	                        <?php	
+	                        	echo "</td>";
 	                            echo "</tr>";
 	                           }
 	                          }else {
@@ -91,6 +133,7 @@ session_start();
 	                        ?>
 	                    </table>
 	                </div>
+	                <span id="demo"></span>
 	                <div id="comment" class="tabcontent">
 	                    <table class="list">
 	                        <tr>
