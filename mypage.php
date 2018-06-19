@@ -165,6 +165,21 @@ $userid = $_SESSION["userid"];
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
         <link rel="icon" type="image/png" href="images/favicon.png" />
+        <script>
+            function myFunction(userid,myname) {
+                var values = document.getElementById(userid).value;
+                var nameval = document.getElementById(myname).value;                
+                var txt;
+                var r = confirm("Are you sure to delete?");
+                if (r == true) {
+                    document.location.href = "mypagedelete.php?userid="+values+"";
+                    txt = "";
+                } else {
+                    txt = "";
+                }
+                document.getElementById("demo").innerHTML = txt;
+            }
+          </script>
     </head>
     <body>
         <div class="maindiv center">
@@ -200,7 +215,7 @@ $userid = $_SESSION["userid"];
                             <option value="35_39" <?php if($age == "35_39"){echo "selected";} ?>>35~39</option>
                             <option value="over40" <?php if($age == "over40"){echo "selected";} ?>>Over 40</option>
                          </select><br><br>
-                         
+                         <span id="demo"></span>
                         <button class="mainbutton button1" name="Edit">Edit</button>
                     </form>
                 </div>
@@ -240,7 +255,9 @@ $userid = $_SESSION["userid"];
             <div id="footer">
                 <hr>
                 <a href="logout.php"><button class="mainbutton logout">Logout</button></a>
-                <button class="mainbutton button1">Delete</button>
+                <input type="hidden" name="userid" id="<?php echo $userid; ?>" value="<?php echo $userid; ?>">
+                <input type="hidden" name="name" id="<?php echo $name; ?>" value="<?php echo $name; ?>">
+                <button class="mainbutton button1" onclick="myFunction('<?php echo $userid; ?>','<?php echo $name; ?>')">Delete</button>
             </div>
         </div>     
     </body>
