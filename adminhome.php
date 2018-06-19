@@ -51,9 +51,10 @@ session_start();
 	                        	echo "<td class='listtd'>";
 	                            echo $row["name"];
 	                        	echo "</td>";
-	                        	echo "<td class='listtd'><button class='mainbutton button2'>Edit</button></td>";
-	                        	echo "<td class='listtd'><button class='mainbutton button1'>Delete</button></td>";
-	                        		  
+	                        	echo "<td class='listtd'>
+	                        			<button class='mainbutton button2'>Edit</button>
+	                        			<button class='mainbutton button1'>Delete</button>
+	                        	     </td>";
 	                        	echo "</tr>";
 	                       	  }
 	                         }else {
